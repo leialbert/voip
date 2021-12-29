@@ -33,7 +33,7 @@ class Complaint(models.Model):
     # 被举报号码类型
     bjbhmlx = models.CharField('被举报号码类型',max_length=12,blank=True, null=True)
     # 举报内容
-    jbnr = models.TextField('举报内容',max_length=400,blank=True, null=True)
+    jbnr = models.TextField('举报内容',max_length=1000,blank=True, null=True)
     # 投诉添加时间
     created_at = models.DateTimeField('投诉添加时间',auto_now_add=True, null=True)
     
@@ -45,6 +45,16 @@ class Complaint(models.Model):
     is_tjyd = models.BooleanField('是否提交给移动',default=False,null=True,blank=True)
     # 催收机构名称
     csjg = models.CharField('催收机构名称',max_length=40,null=True,blank=True)
+    # 被催收人
+    bcsr = models.CharField('被催收人',max_length=40,null=True,blank=True)
+    # 逾期金额
+    yqje = models.FloatField('逾期金额',max_length=10,null=True,blank=True)
+    # 逾期天数
+    yqts = models.CharField('逾期天数',max_length=5,null=True,blank=True)
+    # 投诉号码是否是本人
+    is_br = models.BooleanField('投诉号码是否是本人',default=True)
+    cszl_img = models.ImageField('借款资料')
+    cszl_mp3 = models.FileField('通话录音',upload_to='')
     # 催收描述
     csms = models.TextField('催收描述',max_length=200,null=True,blank=True)
     # 资料更新时间
