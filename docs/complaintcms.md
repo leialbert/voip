@@ -52,3 +52,8 @@ frontend/css/tailwind.css
 @tailwind components;
 @tailwind utilities;
 ```
+
+forms
+```
+npm install @tailwindcss/forms
+```
