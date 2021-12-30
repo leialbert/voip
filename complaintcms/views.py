@@ -8,10 +8,9 @@ def index(request):
 
 def result(request):
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        file = request.FILES.getlist('file')
-        complaint = Complaint.objects.create(cszl_mp3 = file)
-        complaint.save()
-    else:
-        form = UploadFileForm()
-    return render(request, 'complaintcms/result.html',{'form':form})
+        rawdata = request.POST['rawdata']
+        rawlist = rawdata.split()
+    return render(request, 'complaintcms/result.html',{'rawdata':rawlist})
+
+def parse(request):
+    return render(request,'complaintcms/parse.html')

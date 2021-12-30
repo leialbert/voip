@@ -53,8 +53,8 @@ class Complaint(models.Model):
     yqts = models.CharField('逾期天数',max_length=5,null=True,blank=True)
     # 投诉号码是否是本人
     is_br = models.BooleanField('投诉号码是否是本人',default=True)
-    cszl_img = models.ImageField('借款资料',null=True, blank=True,upload_to='uploads/images/')
-    cszl_mp3 = models.FileField('通话录音',null=True,blank=True,upload_to='uploads/files/')
+    cszl_img = models.ImageField('借款资料',null=True, blank=True,upload_to='complaint/images/')
+    cszl_mp3 = models.FileField('通话录音',null=True,blank=True,upload_to='complaint/files/')
     # 催收描述
     csms = models.TextField('催收描述',max_length=200,null=True,blank=True)
     # 资料更新时间
