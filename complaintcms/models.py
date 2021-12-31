@@ -64,8 +64,3 @@ class Complaint(models.Model):
 
     def __str__(self):
         return self.tousuid
-
-class ComplaintForm(forms.ModelForm):
-    class Meta:
-        model = Complaint
-        fields = ['cszl_img','cszl_mp3']
