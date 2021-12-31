@@ -1,4 +1,6 @@
+from django import forms
 from django.db import models
+from django.db.models import fields
 
 # Create your models here.
 class Complaint(models.Model):
@@ -62,3 +64,8 @@ class Complaint(models.Model):
 
     def __str__(self):
         return self.tousuid
+
+class ComplaintForm(forms.ModelForm):
+    class Meta:
+        model = Complaint
+        fields = ['cszl_img','cszl_mp3']
