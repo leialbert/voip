@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Complaint(models.Model):
     # 投诉ID
-    tousuid = models.CharField('投诉ID',max_length=10,blank=False, null=True)
+    tousuid = models.CharField('投诉ID',max_length=10,blank=False, null=False,primary_key='tousuid',default='')
     # 来源渠道
     lyqd = models.CharField('来源渠道',max_length=20,blank=True, null=True)
     # 举报号码
