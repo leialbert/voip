@@ -11,9 +11,8 @@
 <body>
     <div class="container">
         <ul>
-            {% for x in rawdata %}
-            <li>{{ x }}</li>
-            {% endfor %}
+            <li>{{ obj.tousuid }}</li>
+            <!-- <li><a href="{% url 'result' obj.cszl_img1 %}">{{ obj.cszl_img1 }}</a></li> -->
         </ul>
     </div>
     <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
