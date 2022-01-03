@@ -1,68 +1,61 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type= "text/css" href="{% static 'css/bootstrap.min.css' %}">
-</head>
-<body>
-    <div class="container">
-        <form action="{% url 'result' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="tousuid">投诉ID：</label>
-                <input type="text" name="tousuid" id="tousuid" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="csjg">催收机构：</label>
-                <input type="text" name="csjg" id="csjg" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="bcsr">被催收人：</label>
-                <input type="text" name="bcsr" id="bcsr" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="yqje">逾期金额：</label>
-                <input type="text" name="yqje" id="yqje" class="form-control">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="yqts">逾期天数：</label>
-                <input type="text" name="yqts" id="yqts" class="form-control">
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" name='is_br' id="flexSwitchCheckChecked" value=True checked>
-                <label class="form-check-label" for="flexSwitchCheckChecked">投诉号码是否是本人</label>
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="cszl_img1">资料图片1：</label>
-                <input type="file" class="form-control" name='cszl_img1'id="cszl_img1">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="cszl_img2">资料图片2：</label>
-                <input type="file" class="form-control" name='cszl_img2'id="cszl_img2">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="cszl_img3">资料图片3：</label>
-                <input type="file" class="form-control" name='cszl_img3'id="cszl_img3">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="cszl_mp3">录音文件：</label>
-                <input type="file" class="form-control" name='cszl_mp3' id="cszl_mp3">
-            </div>
-            <div class="input-group mb-3">
-                <input type="submit" value="提交资料">
-            </div>
-        </form> 
-    </div>
-    
+{% extends "./base.html" %}
 
+{% block content %}
+<div class="container ">
+    <form action="{% url 'result' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="tousuid">投诉ID：</label>
+            <input type="text" name="tousuid" id="tousuid" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="csjg">催收机构：</label>
+            <input type="text" name="csjg" id="csjg" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="bcsr">被催收人：</label>
+            <input type="text" name="bcsr" id="bcsr" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="yqje">逾期金额：</label>
+            <input type="text" name="yqje" id="yqje" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="yqts">逾期天数：</label>
+            <input type="text" name="yqts" id="yqts" class="form-control">
+        </div>
 
-    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
-</body>
-</html>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">是否本人号码</label>
+            <select class="form-select" id="inputGroupSelect01" name='is_br'>
+                <option selected value="True">被叫是本人号码</option>
+                <option value="False">是本人其他联系人</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="cszl_img1">资料图片1：</label>
+            <input type="file" class="form-control" name='cszl_img1'id="cszl_img1" value='sss'>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="cszl_img2">资料图片2：</label>
+            <input type="file" class="form-control" name='cszl_img2'id="cszl_img2">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="cszl_img3">资料图片3：</label>
+            <input type="file" class="form-control" name='cszl_img3'id="cszl_img3">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="cszl_mp3">录音文件：</label>
+            <input type="file" class="form-control" name='cszl_mp3' id="cszl_mp3">
+        </div>
+        <div class="input-group mb-3">
+            <input type="submit" value="提交资料">
+        </div>
+    </form> 
+</div>
+{% endblock %}
+
 
 
 

@@ -35,9 +35,9 @@ def result(request):
                     'cszl_mp3':cszl_mp3
                 }
             )
-        # print(obj)
         context = {
             'obj':obj,
+            'updated':updated,
         }
     return render(request,'complaintcms/result.html',context)
 

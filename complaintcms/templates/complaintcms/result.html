@@ -10,9 +10,11 @@
 </head>
 <body>
     <div class="container">
-        <ul>
-            <li>{{ obj.tousuid }}</li>
-            <!-- <li><a href="{% url 'result' obj.cszl_img1 %}">{{ obj.cszl_img1 }}</a></li> -->
+        {% if updated %}
+           <p>{{ obj.tousuid }} 提交成功。</p> 
+        {% endif %}
+       
+
         </ul>
     </div>
     <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
