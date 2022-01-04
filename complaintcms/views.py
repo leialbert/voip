@@ -43,3 +43,6 @@ def result(request):
 
 def parse(request):
     return render(request,'complaintcms/parse.html')
+
+def upload(request):
+    return render(request,'complaintcms/parse.html')
