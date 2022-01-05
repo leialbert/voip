@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('result/',views.result,name='result'),
     path('parse/',views.parse, name='parse'),
-    path('upload/',views.upload,name='upload'),
+    # path('upload/',views.upload,name='upload'),
 ]
