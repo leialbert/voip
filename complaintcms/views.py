@@ -46,27 +46,6 @@ def parse(request):
     return render(request,'complaintcms/parse.html')
 
 def upload(request):
-    """
-    tousuid	
-    lyqd	
-    jbhm	
-    jbhmyys	
-    jbhmgssf	
-    jbhmgscs	
-    bjbhm	
-    bjbhmgssf	
-    bjbhmgscs	
-    jb_date	
-    ld_date	
-    thsc	
-    bllx	
-    bjbhmlx	
-    jbnr	
-    rk_date	csms	
-    is_br	
-    is_cszl	
-    is_tjyd
-    """
     with open('tszl.txt','r',encoding='utf-8') as f:
         lines = f.readlines()
         for line in lines:
@@ -98,5 +77,4 @@ def upload(request):
 
                 }
             )
-
     return render(request,'complaintcms/parse.html')
