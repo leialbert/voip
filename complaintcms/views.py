@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from .forms import UploadFileForm
 from .models import Complaint
+import datetime
 
 # Create your views here.
 def index(request):
@@ -45,4 +46,57 @@ def parse(request):
     return render(request,'complaintcms/parse.html')
 
 def upload(request):
+    """
+    tousuid	
+    lyqd	
+    jbhm	
+    jbhmyys	
+    jbhmgssf	
+    jbhmgscs	
+    bjbhm	
+    bjbhmgssf	
+    bjbhmgscs	
+    jb_date	
+    ld_date	
+    thsc	
+    bllx	
+    bjbhmlx	
+    jbnr	
+    rk_date	csms	
+    is_br	
+    is_cszl	
+    is_tjyd
+    """
+    with open('tszl.txt','r',encoding='utf-8') as f:
+        lines = f.readlines()
+        for line in lines:
+            record = list(line.split('\t'))
+            # print(record[9])
+            
+            obj,updated = Complaint.objects.update_or_create(
+                tousuid = record[0],
+                defaults={
+                    'lyqd':record[1],
+                    'jbhm':record[2],
+                    'jbhmyys':record[3],
+                    'jbhmgssf':record[4],
+                    'jbhmgscs':record[5],
+                    'bjbhm':record[6],
+                    'bjbhmgssf':record[7],
+                    'bjbhmgscs':record[8],
+                    'jb_date':datetime.datetime.strptime(record[9],"%Y/%m/%d %H:%M"),
+                    'ld_date':datetime.datetime.strptime(record[10],"%Y/%m/%d %H:%M"),
+                    'thsc':record[11],
+                    'bllx':record[12],
+                    'bjbhmlx':record[13],
+                    'jbnr':record[14],
+                    'rk_date':datetime.datetime.strptime(record[15],"%Y/%m/%d %H:%M"),
+                    'csms':record[16],
+                    'is_br':True,
+                    'is_cszl':True,
+                    'is_tjyd':True
+
+                }
+            )
+
     return render(request,'complaintcms/parse.html')
