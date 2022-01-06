@@ -2,7 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from .forms import UploadFileForm
 from .models import Complaint
-import datetime
+import datetime,re
 
 # Create your views here.
 def index(request):
@@ -43,8 +43,74 @@ def result(request):
     return render(request,'complaintcms/result.html',context)
 
 def parse(request):
-    return render(request,'complaintcms/parse.html')
+    if request.method == 'POST':
+        rawdata = request.POST['rawdata']
+        new_list = rawdata.split(' ')
+        
+        jb_date = new_list[21].strip() + ' ' + new_list[22].strip()
+        rk_date = new_list[24].strip() + ' ' + new_list[25].strip()
+        ld_date = new_list[27].strip() + ' ' +new_list[28].strip()
+        # print(jb_date)
+        # print(rk_date)
+        # print(ld_date)
+        datasrc = {
+            'tousuid':new_list[1],
+            'lyqd':new_list[3],
+            'jbhm':new_list[5],
+            'jbhmyys':new_list[9],
+            'jbhmgssf':new_list[13],
+            'jbhmgscs':new_list[17],
+            'bjbhm':new_list[7],
+            'bjbhmgssf':new_list[15],
+            'bjbhmgscs':new_list[19],
+            'jb_date':datetime.datetime.strptime(jb_date,"%Y-%m-%d %H:%M:%S"),
+            'ld_date':datetime.datetime.strptime(ld_date,"%Y-%m-%d %H:%M:%S"),
+            'thsc':new_list[32],
+            'bllx':new_list[30],
+            'bjbhmlx':new_list[34],
+            'jbnr':new_list[36],
+            'rk_date':datetime.datetime.strptime(rk_date,"%Y-%m-%d %H:%M:%S"),
+            'is_br':True,
+            'is_cszl':False,
+            'is_tjyd':False
+        }
 
+        print(datasrc)
+        # obj,created = Complaint.objects.update_or_create(
+        #     tousuid = context['tousuid'],
+        #     defaults=context[1:]
+        # )
+    # obj,created = Complaint.objects.update_or_create(
+    #     tousuid = new_list[1],
+    #     defaults={
+    #         'lyqd':new_list[3],
+    #         'jbhm':new_list[5],
+    #         'jbhmyys':new_list[9],
+    #         'jbhmgssf':new_list[13],
+    #         'jbhmgscs':new_list[17],
+    #         'bjbhm':new_list[7],
+    #         'bjbhmgssf':new_list[15],
+    #         'bjbhmgscs':new_list[19],
+    #         'jb_date':datetime.datetime.strptime(jb_date,"%Y/%m/%d %H:%M:%S"),
+    #         'ld_date':datetime.datetime.strptime(ld_date,"%Y/%m/%d %H:%M:%S"),
+    #         'thsc':new_list[32],
+    #         'bllx':new_list[30],
+    #         'bjbhmlx':new_list[34],
+    #         'jbnr':new_list[36],
+    #         'rk_date':datetime.datetime.strptime(rk_date,"%Y/%m/%d %H:%M:%S"),
+    #         'is_br':True,
+    #         'is_cszl':False,
+    #         'is_tjyd':False
+
+    #     }
+    # )
+
+    # Complaint.objects.get(tousuid=request.POST[''])
+        return render(request,'complaintcms/saveto.html',datasrc)
+    return render(request,'complaintcms/parse.html')
+def saveto(request):
+    pass
+    # return render(request,'complaintcms/saveto.html')
 def upload(request):
     with open('tszl.txt','r',encoding='utf-8') as f:
         lines = f.readlines()
