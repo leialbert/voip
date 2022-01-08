@@ -1,9 +1,0 @@
-
-<form action="{% url 'saveto' %}" method="post">
-    {% csrf_token %} 
-    {{ datasrc.tousuid }}   
-
-    <input type="text" name="{{ key }}" id="{{ key }}" value="{{ value }}">
-   
-    <input type="submit" value="submit2">
-</form>
