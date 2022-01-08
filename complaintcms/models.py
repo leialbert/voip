@@ -4,6 +4,10 @@ from django.db.models import fields
 
 # Create your models here.
 class Complaint(models.Model):
+    class Meta:
+        #  verbose_name = "账号信息"
+        
+        verbose_name_plural = "投诉管理"
     # 投诉ID
     tousuid = models.CharField('投诉ID',max_length=10,blank=False, null=False,primary_key='tousuid',default='')
     # 来源渠道

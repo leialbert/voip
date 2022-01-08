@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'complaintcms.apps.ComplaintcmsConfig',
+    'crm.apps.CrmConfig',
 ]
 
 MIDDLEWARE = [

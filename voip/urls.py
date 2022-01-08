@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 from complaintcms.views import index
 urlpatterns = [
     path('',index),
-    path('complaint/', include('complaintcms.urls')),
+    path('complaint/', include('complaintcms.urls',namespace='complaintcms')),
+    path('crm/', include('crm.urls',namespace='crm')),
     path('admin/', admin.site.urls),
 ]
 
