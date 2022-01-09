@@ -1,13 +1,14 @@
 from django import forms
 from django.db import models
 from django.db.models import fields
+from django.db.models.deletion import CASCADE
 
 # Create your models here.
 class Complaint(models.Model):
     class Meta:
         #  verbose_name = "账号信息"
         
-        verbose_name_plural = "投诉管理"
+        verbose_name_plural = "1 - 投诉管理"
     # 投诉ID
     tousuid = models.CharField('投诉ID',max_length=10,blank=False, null=False,primary_key='tousuid',default='')
     # 来源渠道
@@ -69,6 +70,19 @@ class Complaint(models.Model):
     csms = models.TextField('催收描述',max_length=200,null=True,blank=True)
     # 资料更新时间
     updated_at = models.DateTimeField('资料更新时间',auto_now=True, null=True)
+
+    def __str__(self):
+        return self.tousuid
+
+class DownloadComplaint(models.Model):
+    class Meta:
+        verbose_name_plural = '2 - 下载管理'
+
+    tousuid = models.ForeignKey('Complaint',verbose_name='投诉ID',on_delete=CASCADE)
+    img1 = models.CharField('资料1',max_length=20,null=True, blank=True)
+    img2 = models.CharField('资料2',max_length=20,null=True, blank=True)
+    img3 = models.CharField('资料3',max_length=20,null=True, blank=True)
+    mp3_wav = models.CharField('录音',max_length=20,null=True, blank=True)
 
     def __str__(self):
         return self.tousuid

@@ -13,6 +13,7 @@ class Zhanghu(models.Model):
     company_doc = models.FileField('营业执照',null=True,blank=True,upload_to='crms/files/')
     contract = models.FileField('合同',null=True,blank=True,upload_to='crms/files/')
     other_doc = models.FileField('补充附件',null=True,blank=True,upload_to='crms/files/')
+    tel_phone = models.CharField('联系方式',max_length=40,default='')
 
     def __str__(self):
         return self.zhanghu
